@@ -59,7 +59,7 @@
     const newQuoteBtn = document.getElementById("newQuoteBtn");
 
     function getQuote() {
-  fetch('quotes.json')
+  fetch('part1/quotes.json')
   .then(response => response.json())
   .then(data => {
     const randomIndex = Math.floor(Math.random() * data.length);
