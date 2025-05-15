@@ -60,13 +60,15 @@
 
     function getQuote() {
     fetch("quotes.json")
-      .fetch("quotes.json")
-      .then (Response => Response.json())
-      .then ((Response) => console.log(Response));
+      .then (response => Response.json())
+      .then (data => {
+        const randomIndex = Math.floor(Math.random() * data.length);
+        const quote = data[randomIndex];
 
-      document.getElementById("quote").innerHTML = json[0].q;
-      });
-  }
+        quoteText.innerHTML = `"${quote.q}"`;
+        authorText.innerHTML = `— ${quote.a}`;
+      })
+    }
 
     newQuoteBtn.addEventListener("click", getQuote);
     getQuote(); // Load a quote on page load
