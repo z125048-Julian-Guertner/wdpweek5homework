@@ -60,22 +60,11 @@
 
     function getQuote() {
     fetch("quotes.json")
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Could not fetch quotes");
-        }
-        return response.json();
-      })
-      .then(data => {
-        const randomIndex = Math.floor(Math.random() * data.length);
-        const randomQuote = data[randomIndex];
-        quoteText.textContent = `"${randomQuote.quote}"`;
-        authorText.textContent = `— ${randomQuote.author}`;
-      })
-      .catch(error => {
-        quoteText.textContent = "Error! Something went wrong.";
-        authorText.textContent = "";
-        console.error("Error fetching quote:", error);
+      .fetch("quotes.json")
+      .then (Response => Response.json())
+      .then ((Response) => console.log(Response));
+
+      document.getElementById("quote").innerHTML = json[0].q;
       });
   }
 
